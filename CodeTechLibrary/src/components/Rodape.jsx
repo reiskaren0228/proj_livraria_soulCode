@@ -1,6 +1,11 @@
+import "./Rodape.css"
 function Rodape() {
-  return(
-    <main></main>
+  return (
+    <>
+      <footer>
+        <p>©Code Tech Library. Todos os direitos reservados.</p>
+      </footer>
+    </>
   )
 }
 
