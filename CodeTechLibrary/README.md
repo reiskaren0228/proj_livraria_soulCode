@@ -18,6 +18,7 @@ O projeto CodeTechLibrary é uma aplicação web simples para gerenciar livros e
 
 ## Estrutura do Projeto
 
+```bash
 proj_livraria_soulCode/
 ├── public/
 │ ├── index.html
@@ -34,6 +35,7 @@ proj_livraria_soulCode/
 ├── .gitignore
 ├── package.json
 └── README.md
+```
 
 ## Instalação
 
