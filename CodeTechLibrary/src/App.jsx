@@ -10,6 +10,7 @@ function App() {
       <Livros />
       <Login />
       <Cadastro />
+      <menubar />
     </>
   );
 }
