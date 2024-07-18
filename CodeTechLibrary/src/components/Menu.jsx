@@ -20,9 +20,11 @@ function Menu() {
             <Nav.Link href="#action1">Home</Nav.Link>
             <Nav.Link href="#action2">Sobre nós</Nav.Link>
             <NavDropdown title="Livros" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Cadastro</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Login</NavDropdown.Item>
+              <NavDropdown.Item href="#action3">Desenvolvimento</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">Infraestrutura</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link>Cadastro</Nav.Link>
+            <Nav.Link>Login</Nav.Link>
             <Nav.Link>Contato</Nav.Link>
           </Nav>
           <Form className="d-flex">
