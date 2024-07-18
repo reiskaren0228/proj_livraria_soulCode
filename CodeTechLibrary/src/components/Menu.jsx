@@ -11,7 +11,7 @@ function Menu() {
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
         <Navbar.Brand href="/">
-        <img src={logo} alt="Imagem da logo" width="70" />
+        <img src={logo} alt="Imagem da logo" width="60" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
