@@ -1,5 +1,3 @@
-
-
 function Sobre() {
   return (
     <main>
