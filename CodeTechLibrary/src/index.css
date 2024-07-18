@@ -1,10 +1,12 @@
-@import url("bootstrap/dist/css/bootstrap.min.css");
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "Nunito", sans-serif;
+}
+
+main {
+  min-height: 100vh;
 }
 
 body {
@@ -21,7 +23,7 @@ body {
 
 .form-section h1 {
   margin-bottom: 1.5rem;
-  color:#152929; 
+  color: #152929;
 }
 
 .form-section label {
@@ -60,13 +62,13 @@ body {
 }
 
 .form-section .btn-dark {
-  background-color: #152929; 
+  background-color: #152929;
   border: none;
-  color: #cdcfc6; 
+  color: #cdcfc6;
 }
 
 .form-section .btn-dark:hover {
-  background-color: #0f1d1d; 
+  background-color: #0f1d1d;
 }
 
 .icon-container {

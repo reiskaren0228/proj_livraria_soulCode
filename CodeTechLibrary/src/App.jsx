@@ -4,6 +4,8 @@ import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home";
+import Rodape from "./components/Rodape";
+import Sobre from "./pages/Sobre";
 
 function App() {
   return (
@@ -18,10 +20,10 @@ function App() {
           <Route path="/livros" element={<Livros />} />
           {/* <Route path="/tarefas/adicionar" element={<NovaTarefa />} />
           <Route path="/tarefas/editar/:id" element={<EditarTarefa />} /> */}
-          {/* <Route path="/politicas" element={<Politicas />} /> */}
+          <Route path="/sobre" element={<Sobre />} />
           {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
-        {/* <Rodape /> */}
+        <Rodape /> 
       </BrowserRouter>
     </>
   )

@@ -3,6 +3,10 @@ import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
+<<<<<<< HEAD
+=======
+import "./Menu.css";
+>>>>>>> ecd55f3b71f91a8c5f5ccc3f24ba81afb5ec6d0c
 
 import logo from "../assets/logo_2.png"
 function Menu() {
@@ -34,7 +38,7 @@ function Menu() {
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-dark">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
