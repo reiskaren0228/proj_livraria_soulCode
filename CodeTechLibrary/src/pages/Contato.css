@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #152929;
+  color: #cdcfc6;
+  padding: 1rem;
+  text-align: center;
+}
+
+.titulo {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.descricao {
+  font-size: 1.2rem;
+}
+
+.navcabecalho {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.navcabecalho a {
+  color: #cdcfc6;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.navcabecalho a:hover {
+  color: #5c7f9a;
+}
+
+.central {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.info-contato {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.info-contato h2 {
+  color: #152929;
+  margin-bottom: 1rem;
+}
+
+.info-contato p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.info-contato ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.info-contato li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.info-contato a {
+  color: #5c7f9a;
+  text-decoration: none;
+}
+
+.info-contato a:hover {
+  text-decoration: underline;
+}
+
+.form-contato {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-contato h2 {
+  color: #152929;
+  margin-bottom: 1rem;
+}
+
+.form-contato label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #152929;
+  font-weight: bold;
+}
+
+.form-contato input,
+.form-contato textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #6e96af;
+  margin-bottom: 1rem;
+}
+
+.form-contato button {
+  display: block;
+  width: auto;
+  max-width: 200px;
+  padding: 0.75rem;
+  margin: 1rem auto 0;
+  border: none;
+  border-radius: 8px;
+  background-color: #6e96af;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.form-contato button:hover {
+  background-color: #5c7f9a;
+}
+
+.redes-sociais {
+  margin-top: 2rem;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 34px;
+}
+
+.icon-container ion-icon {
+  color: #5c7f9a;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.icon-container ion-icon:hover {
+  color: #4c718d;
+  transform: scale(1.1);
+}
