@@ -1,15 +1,4 @@
 function Sobre() {
-  return(
-    <main>
-
-    </main>
-  )
-}
-
-export default Sobre;
-import React from 'react';
-
-function Sobre() {
   return (
     <main>
       <section className="form-section mt-5">

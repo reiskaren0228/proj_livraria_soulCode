@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home";
 import Rodape from "./components/Rodape";
 import Sobre from "./pages/Sobre";
+import Contato from './pages/Contato'; 
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          {/* <Route path="/contato" element={<Contato />} /> */}
+          <Route path="/contato" element={<Contato />} /> 
           <Route path="/livros" element={<Livros />} />
           {/* <Route path="/tarefas/adicionar" element={<NovaTarefa />} />
           <Route path="/tarefas/editar/:id" element={<EditarTarefa />} /> */}
