@@ -1,9 +1,9 @@
-import React from 'react';
+
 
 function Sobre() {
   return (
     <main>
-      <section className="form-section mt-5">
+      <section>
         <h1>Sobre Nós</h1>
         <p>
           Bem-vindo à CodeTechLibrary! Somos uma livraria dedicada a fornecer uma vasta gama de livros técnicos e recursos para desenvolvedores, engenheiros e entusiastas de tecnologia.
