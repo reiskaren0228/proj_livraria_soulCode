@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import "./CardLivro.css"
 
 const CardLivro = ({
@@ -8,12 +9,26 @@ const CardLivro = ({
   data_da_publicacao,
   editora,
   descricao,
+  adicionarLivro,
 }) => {
   const [curtido, setCurtido] = useState(false)
+  const navigate = useNavigate()
 
-  // Função para o botão de curtida
   const handleCurtida = () => {
     setCurtido(!curtido)
+  }
+
+  const handleAdicionar = () => {
+    const livro = {
+      imagem,
+      titulo,
+      autor,
+      data_da_publicacao,
+      editora,
+      descricao,
+    }
+    adicionarLivro(livro)
+    navigate("/livros")
   }
 
   return (
@@ -39,6 +54,7 @@ const CardLivro = ({
       >
         ❤
       </button>
+      <button onClick={handleAdicionar}>Adicionar à lista</button>
     </div>
   )
 }

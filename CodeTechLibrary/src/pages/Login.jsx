@@ -16,7 +16,7 @@ function Login() {
    function entrar(data) {
     loginUsuario(data.email, data.senha).then(() => {
       toast.success("Bem-vindo ao CodeTechLibrary! 📘")
-      navigate("/livros")
+      navigate("/home")
     }).catch(() => {
       toast.error("Email e/ou Senha incorreta!")
     })
@@ -24,7 +24,7 @@ function Login() {
    function handleEntrarGoogle() {
     entrarGoogle().then(() => {
       toast.success("Bem-vindo ao CodeTechLibrary! 📘")
-      navigate("/livros")
+      navigate("/home")
     })
    }
   return (

@@ -1,7 +1,8 @@
+import { useState } from "react";
 import CardLivro from "../components/CardLivro"
 import "./Home.css"
 
-const livros = [
+const livrosData = [
   {
     imagem: "https://m.media-amazon.com/images/I/619FY8Lx4sL._SL1500_.jpg",
     titulo: "Guia Front-End",
@@ -113,8 +114,7 @@ const livros = [
     categoria: "Data Science",
   },
 ]
-
-const SecaoLivros = ({ titulo, livros }) => {
+const SecaoLivros = ({ titulo, livros, adicionarLivro }) => {
   return (
     <div className="secao-livros">
       <h2>{titulo}</h2>
@@ -128,6 +128,7 @@ const SecaoLivros = ({ titulo, livros }) => {
             data_da_publicacao={livro.data_da_publicacao}
             editora={livro.editora}
             descricao={livro.descricao}
+            adicionarLivro={adicionarLivro} // Passando a função como prop
           />
         ))}
       </div>
@@ -135,8 +136,9 @@ const SecaoLivros = ({ titulo, livros }) => {
   )
 }
 
-const Home = () => {
-  const categorias = [...new Set(livros.map((livro) => livro.categoria))]
+const Home = ({ adicionarLivro }) => {
+  const categorias = [...new Set(livrosData.map((livro) => livro.categoria))]
+  const [livros, setLivros] = useState(livrosData)
 
   return (
     <main>
@@ -146,6 +148,7 @@ const Home = () => {
           key={categoria}
           titulo={categoria}
           livros={livros.filter((livro) => livro.categoria === categoria)}
+          adicionarLivro={adicionarLivro} // Passando a função como prop
         />
       ))}
     </main>
