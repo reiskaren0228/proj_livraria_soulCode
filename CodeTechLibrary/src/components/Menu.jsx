@@ -22,7 +22,7 @@ function Menu() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="/">
+        <Navbar.Brand>
           <img src={logo} alt="Imagem da logo" width="60" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -49,9 +49,6 @@ function Menu() {
               </>
             ) : (
               <>
-                <Link className="nav-link" to="/">
-                  Home
-                </Link>
                 <Link className="nav-link" to="/login">
                   Login
                 </Link>
