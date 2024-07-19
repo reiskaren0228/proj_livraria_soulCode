@@ -7,34 +7,38 @@ import {
   deleteDoc,
   doc,
   getDoc,
+  query,
+  where,
 } from "firebase/firestore"
 
 const livrosCollection = collection(db, "livros")
 
-const createLivro = async (livro) => {
+export const createLivro = async (livro) => {
   await addDoc(livrosCollection, livro)
 }
 
-const readLivros = async () => {
+export const readLivros = async () => {
   const snapshot = await getDocs(livrosCollection)
-  const livrosList = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-  return livrosList
+  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
 }
 
-const getLivro = async (id) => {
+export const getLivro = async (id) => {
   const livroDoc = doc(db, "livros", id)
   const livro = await getDoc(livroDoc)
   return livro.exists() ? { id: livro.id, ...livro.data() } : null
 }
 
-const updateLivro = async (id, updatedLivro) => {
+export const getLivrosUsuario = async (idUsuario) => {
+  const filtro = query(livrosCollection, where("idUsuario", "==", idUsuario))
+  const snapshot = await getDocs(filtro)
+  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+}
+
+export const updateLivro = async (id, updatedLivro) => {
   const livroDoc = doc(db, "livros", id)
   await updateDoc(livroDoc, updatedLivro)
 }
 
-const deleteLivro = async (id) => {
-  const livroDoc = doc(db, "livros", id)
-  await deleteDoc(livroDoc)
+export const deleteLivro = async (id) => {
+  await deleteDoc(doc(db, "livros", id))
 }
-
-export { createLivro, readLivros, getLivro, updateLivro, deleteLivro }

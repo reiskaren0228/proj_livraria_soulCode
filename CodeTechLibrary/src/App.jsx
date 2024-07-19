@@ -1,22 +1,23 @@
+import { useEffect, useState } from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { onAuthStateChanged } from "firebase/auth"
+import { Toaster } from "react-hot-toast"
+
 import Menu from "./components/Menu"
 import Livros from "./pages/Livros"
 import Login from "./pages/Login"
 import Cadastro from "./pages/Cadastro"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import Rodape from "./components/Rodape"
 import Sobre from "./pages/Sobre"
 import Contato from "./pages/Contato"
-import { UsuarioContext } from "./context/UsuarioContext"
-import EditarLivro from "./EditarLivro.jsx"
+import EditarLivro from "./pages/EditarLivro"
+import UsuarioContext from "./context/UsuarioContext"
 
-import { useEffect, useState } from "react"
 import { auth } from "./firebase/config.js"
-import { onAuthStateChanged } from "firebase/auth"
-import { Toaster } from "react-hot-toast"
-import { createLivro, readLivros } from "./firebase/livros" // Importando as funções do Firestore
+import { createLivro, readLivros } from "./firebase/livros" // Certifique-se de que os caminhos estão corretos
 
-function App() {
+const App = () => {
   const [usuarioLogado, setUsuarioLogado] = useState(null)
   const [loading, setLoading] = useState(true)
   const [livros, setLivros] = useState([]) // Adicionando estado para os livros

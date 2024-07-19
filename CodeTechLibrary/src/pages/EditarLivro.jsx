@@ -3,9 +3,9 @@ import { Button } from "react-bootstrap"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { Navigate, useNavigate, useParams } from "react-router-dom"
-import { getLivro, updateLivro } from "./firebase/livros"
+import { getLivro, updateLivro } from "../firebase/livros"
 import { useContext, useEffect } from "react"
-import { UsuarioContext } from "./context/UsuarioContext"
+import UsuarioContext from "../context/UsuarioContext"
 
 function EditarLivro() {
   const { id } = useParams()
