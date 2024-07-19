@@ -1,107 +1,64 @@
-/* Global Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-.App {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Section Header */
-.secao-livros h1 {
-    font-size: 2.5em;
-    text-align: justify;
-    margin-bottom: 40px;
-    color: #333;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
-}
-
-/* Card Container */
-.livro {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: justify;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-    max-width: 300px;
-    margin: 20px;
-}
-
-.livro:hover {
-    transform: scale(1.02);
-}
-
-.livro img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.livro h2 {
-    font-size: 1.5em;
-    margin: 20px 0 10px;
-    color: #333;
-    text-align: center;
-}
-
-.livro p {
-    margin: 5px 0;
-    line-height: 1.6;
-    color: #555;
-    text-align: justify;
-}
-
-.livro strong {
-    color: #333;
-}
-
-/* Rating Stars */
-.avaliacao {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.star {
-    font-size: 1.5em;
-    cursor: pointer;
-    color: #ddd;
-    transition: color 0.2s;
-}
-
-.star.filled {
-    color: gold;
-}
-
-.star:hover,
-.star:hover~.star {
-    color: gold;
-}
-
-/* Card Layout */
-.secao-livros {
+/* Estilo para o container principal */
+.lista-livros {
     display: flex;
     flex-wrap: wrap;
+    gap: 16px;
     justify-content: center;
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-    .livro {
-        max-width: 90%;
-        margin: 10px;
-    }
-}
+  }
+  
+  /* Estilo para cada card de livro */
+  .card-livro {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 200px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card-livro:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilo para a imagem do livro */
+  .card-livro img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  /* Estilo para o título do livro */
+  .titulo-card {
+    font-size: 1.2em;
+    margin: 8px 0;
+    padding: 0 8px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Estilo para as informações do livro */
+  .livro-info {
+    font-size: 0.9em;
+    color: #555;
+    margin: 4px 0;
+    padding: 0 8px;
+  }
+  
+  /* Estilo para a descrição do livro */
+  .livro-descricao {
+    font-size: 0.9em;
+    color: #555;
+    margin: 8px 0;
+    padding: 0 8px 8px;
+  }
+  
+  /* Estilo para o título principal */
+  h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  

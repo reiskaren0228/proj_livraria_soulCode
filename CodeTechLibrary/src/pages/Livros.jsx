@@ -1,4 +1,5 @@
-import "./Livros.css"
+import React from 'react';
+import './Livros.css';
 
 const Livros = ({ livros }) => {
   return (
@@ -26,7 +27,7 @@ const Livros = ({ livros }) => {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
-export default Livros
+export default Livros;
