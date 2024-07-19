@@ -6,26 +6,32 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home";
 import Rodape from "./components/Rodape";
 import Sobre from "./pages/Sobre";
-import Contato from './pages/Contato'; 
+import Contato from './pages/Contato';
+import { UsuarioContext } from "./context/UsuarioContext";
+import NovoLivro from "./pages/NovoLivro";
+import { auth } from "./firebase/config";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Menu />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/contato" element={<Contato />} /> 
-          <Route path="/livros" element={<Livros />} />
-          {/* <Route path="/tarefas/adicionar" element={<NovaTarefa />} />
+      <UsuarioContext.Provider value={usuarioLogado}>
+        <BrowserRouter>
+          <Menu />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/contato" element={<Contato />} />
+            <Route path="/livros" element={<Livros />} />
+            <Route path="livros/adcionar" element={<NovoLivro/>}/>
+            {/* <Route path="/tarefas/adicionar" element={<NovaTarefa />} />
           <Route path="/tarefas/editar/:id" element={<EditarTarefa />} /> */}
-          <Route path="/sobre" element={<Sobre />} />
-          {/* <Route path="*" element={<NotFound />} /> */}
-        </Routes>
-        <Rodape /> 
-      </BrowserRouter>
+            <Route path="/sobre" element={<Sobre />} />
+            {/* <Route path="*" element={<NotFound />} /> */}
+          </Routes>
+          <Rodape />
+        </BrowserRouter>
+      </UsuarioContext.Provider>
     </>
   )
 }
