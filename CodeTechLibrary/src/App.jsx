@@ -10,9 +10,10 @@ import Contato from "./pages/Contato"
 import { UsuarioContext } from "./context/UsuarioContext"
 import NovoLivro from "./pages/NovoLivro"
 import { useEffect, useState } from "react"
-import { auth } from "./firebase/config"
+import { auth } from "./firebase/config.js"
 import { onAuthStateChanged } from "firebase/auth"
 import { Toaster } from "react-hot-toast"
+import { createLivro, readLivros } from "./firebase/livros" // Importando as funções do Firestore
 
 function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null)
@@ -24,10 +25,19 @@ function App() {
       setUsuarioLogado(user)
       setLoading(false)
     })
+
+    const carregarLivros = async () => {
+      const livrosCarregados = await readLivros()
+      setLivros(livrosCarregados)
+    }
+
+    carregarLivros()
   }, [])
 
-  const adicionarLivro = (novoLivro) => {
-    setLivros([...livros, novoLivro])
+  const adicionarLivro = async (novoLivro) => {
+    await createLivro(novoLivro)
+    const livrosAtualizados = await readLivros()
+    setLivros(livrosAtualizados)
   }
 
   if (loading) {
@@ -48,7 +58,6 @@ function App() {
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/livros" element={<Livros livros={livros} />} />
-            <Route path="livros/adcionar" element={<NovoLivro />} />
             <Route path="/sobre" element={<Sobre />} />
           </Routes>
           <Rodape />

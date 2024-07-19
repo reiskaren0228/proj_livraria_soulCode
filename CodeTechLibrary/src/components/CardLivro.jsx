@@ -18,7 +18,7 @@ const CardLivro = ({
     setCurtido(!curtido)
   }
 
-  const handleAdicionar = () => {
+  const handleAdicionar = async () => {
     const livro = {
       imagem,
       titulo,
@@ -27,7 +27,7 @@ const CardLivro = ({
       editora,
       descricao,
     }
-    adicionarLivro(livro)
+    await adicionarLivro(livro)
     navigate("/livros")
   }
 
