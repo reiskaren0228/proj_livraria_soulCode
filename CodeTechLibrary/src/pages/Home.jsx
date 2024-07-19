@@ -140,7 +140,7 @@ const Home = () => {
 
   return (
     <main>
-      <h1>Lista de Livros</h1>
+      <h1>Catálogo de Livros 📚</h1>
       {categorias.map((categoria) => (
         <SecaoLivros
           key={categoria}

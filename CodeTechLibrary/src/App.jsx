@@ -9,9 +9,26 @@ import Sobre from "./pages/Sobre";
 import Contato from './pages/Contato';
 import { UsuarioContext } from "./context/UsuarioContext";
 import NovoLivro from "./pages/NovoLivro";
+import { useEffect, useState } from "react"
 import { auth } from "./firebase/config";
+import { onAuthStateChanged } from "firebase/auth"
+import { Toaster } from "react-hot-toast"
 
 function App() {
+  const [usuarioLogado, setUsuarioLogado] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUsuarioLogado(user);
+      setLoading(false)
+    })
+  }, [])
+
+  if(loading) {
+    return null;
+  }
+
   return (
     <>
       <UsuarioContext.Provider value={usuarioLogado}>
@@ -23,7 +40,7 @@ function App() {
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/livros" element={<Livros />} />
-            <Route path="livros/adcionar" element={<NovoLivro/>}/>
+            <Route path="livros/adcionar" element={<NovoLivro />} />
             {/* <Route path="/tarefas/adicionar" element={<NovaTarefa />} />
           <Route path="/tarefas/editar/:id" element={<EditarTarefa />} /> */}
             <Route path="/sobre" element={<Sobre />} />
@@ -31,6 +48,7 @@ function App() {
           </Routes>
           <Rodape />
         </BrowserRouter>
+        <Toaster position="top-center" />
       </UsuarioContext.Provider>
     </>
   )

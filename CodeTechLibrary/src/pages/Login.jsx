@@ -1,8 +1,8 @@
 import { Button } from "react-bootstrap"
 import { useForm } from "react-hook-form"
-// import { entrarGoogle, loginUsuario } from "../firebase/auth"
-// import toast from "react-hot-toast"
-// import { useNavigate } from "react-router-dom"
+import toast from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
+import { entrarGoogle, loginUsuario } from "../firebase/auth";
 
 function Login() {
    const {
@@ -10,15 +10,22 @@ function Login() {
      handleSubmit,
      formState: { errors },
    } = useForm();
-  //  const navigate = useNavigate();
+
+   const navigate = useNavigate();
 
    function entrar(data) {
-    console.log("Login")
-    console.log(data)
+    loginUsuario(data.email, data.senha).then(() => {
+      toast.success("Bem-vindo ao CodeTechLibrary! 📘")
+      navigate("/livros")
+    }).catch(() => {
+      toast.error("Email e/ou Senha incorreta!")
+    })
    }
-   function handleEntrarGoogle(data) {
-    console.log("Login com google")
-    console.log(data)
+   function handleEntrarGoogle() {
+    entrarGoogle().then(() => {
+      toast.success("Bem-vindo ao CodeTechLibrary! 📘")
+      navigate("/livros")
+    })
    }
   return (
     <main>

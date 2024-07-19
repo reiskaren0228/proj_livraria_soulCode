@@ -4,14 +4,26 @@ import Form from "react-bootstrap/Form"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import "./Menu.css";
+import { useContext } from "react";
+import { UsuarioContext } from "../context/UsuarioContext";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../firebase/auth";
 
 import logo from "../assets/logo_2.png"
 function Menu() {
+  const usuario = useContext(UsuarioContext);
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    logout().then(() => {
+      navigate("/login")
+    })
+  }
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
         <Navbar.Brand href="/">
-        <img src={logo} alt="Imagem da logo" width="60" />
+          <img src={logo} alt="Imagem da logo" width="60" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -20,13 +32,45 @@ function Menu() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/sobre">Sobre nós</Nav.Link>
-            <Nav.Link href="/livros">Livros
-            </Nav.Link>
-            <Nav.Link href="/cadastro">Cadastro</Nav.Link>
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/contato">Contato</Nav.Link>
+            {usuario ? (
+              <>
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
+                <Link className="nav-link" to="/sobre">
+                  Sobre nós
+                </Link>
+                <Link className="nav-link" to="/livros">
+                  Livros
+                </Link>
+                <Link className="nav-link" to="/contato">
+                  Contato
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+                <Link className="nav-link" to="/cadastro">
+                  Cadastro
+                </Link>
+                <Link className="nav-link" to="/contato">
+                  Contato
+                </Link>
+              </>
+            )}
+            {usuario && (
+              <span className="text-dark nav-link">{usuario.displayName}</span>
+            )}
+            {usuario && (
+              <Button variant="outline-dark" onClick={handleLogout}>
+                Sair
+              </Button>
+            )}
           </Nav>
           <Form className="d-flex">
             <Form.Control

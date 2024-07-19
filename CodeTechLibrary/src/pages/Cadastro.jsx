@@ -1,43 +1,41 @@
-import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import "../index.css";
+import { cadastrarUsuario } from "../firebase/auth"
+import toast from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
 
 function Cadastro() {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
-  const [successMessage, setSuccessMessage] = useState('');
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
 
   function cadastrar(data) {
-    console.log("Cadastro");
-    console.log(data);
-    setSuccessMessage('Usuário cadastrado com sucesso!');
-    reset();
+   cadastrarUsuario(data.nome, data.email, data.senha).then(() => {
+    toast.success(`Bem-vindo ao CodeTechLibrary, ${data.nome}!`)
+    navigate("/livros")
+   }).catch((error) => {
+    toast.error("Um erro aconteceu!" + error.code)
+   })
   }
 
   return (
     <main>
       <form className="form-section mt-5" onSubmit={handleSubmit(cadastrar)}>
         <h1>Cadastro</h1>
-        {successMessage && (
-          <div className="alert alert-success" role="alert">
-            {successMessage}
-          </div>
-        )}
         <div>
-          <label htmlFor="fullName"><b>Nome Completo</b></label>
+          <label htmlFor="nome">Nome Completo</label>
           <input
             type="text"
-            id="fullName"
+            id="nome"
             className="form-control"
             placeholder="Digite seu nome completo"
-            {...register("fullName", { required: "O preenchimento do nome completo é obrigatório" })}
+            {...register("nome", { required: "O preenchimento do nome completo é obrigatório" })}
           />
-          {errors.fullName && (
-            <small className="invalid">{errors.fullName.message}</small>
+          {errors.nome && (
+            <small className="invalid">{errors.nome.message}</small>
           )}
         </div>
         <div>
-          <label htmlFor="email"><b>Email</b></label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
@@ -50,19 +48,19 @@ function Cadastro() {
           )}
         </div>
         <div>
-          <label htmlFor="password"><b>Senha</b></label>
+          <label htmlFor="senha">Senha</label>
           <input
             type="password"
-            id="password"
+            id="senha"
             className="form-control"
             placeholder="Digite sua senha"
-            {...register("password", {
+            {...register("senha", {
               required: "A senha é obrigatória",
               minLength: { value: 6, message: "Mínimo de 6 caracteres" },
             })}
           />
-          {errors.password && (
-            <small className="invalid">{errors.password.message}</small>
+          {errors.senha && (
+            <small className="invalid">{errors.senha.message}</small>
           )}
         </div>
         <Button variant="dark" className="mt-2 mb-2 w-100" type="submit">
