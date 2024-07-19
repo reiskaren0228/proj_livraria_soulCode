@@ -1,7 +1,14 @@
-import React from 'react';
-import './Livros.css';
+
+import "./Livros.css"
+import { useNavigate } from "react-router-dom"
 
 const Livros = ({ livros }) => {
+  const navigate = useNavigate()
+
+  const handleEditar = (id) => {
+    navigate(`/editar-livro/${id}`)
+  }
+
   return (
     <div>
       <h1>Lista de Livros</h1>
@@ -23,11 +30,12 @@ const Livros = ({ livros }) => {
               <strong>Descrição: </strong>
               {livro.descricao}
             </p>
+            <button onClick={() => handleEditar(livro.id)}>Editar</button>
           </div>
         ))}
       </div>
     </div>
-  );
+  )
 }
 
-export default Livros;
+export default Livros

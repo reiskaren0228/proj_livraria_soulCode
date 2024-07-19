@@ -6,6 +6,7 @@ import {
   updateDoc,
   deleteDoc,
   doc,
+  getDoc,
 } from "firebase/firestore"
 
 const livrosCollection = collection(db, "livros")
@@ -20,6 +21,12 @@ const readLivros = async () => {
   return livrosList
 }
 
+const getLivro = async (id) => {
+  const livroDoc = doc(db, "livros", id)
+  const livro = await getDoc(livroDoc)
+  return livro.exists() ? { id: livro.id, ...livro.data() } : null
+}
+
 const updateLivro = async (id, updatedLivro) => {
   const livroDoc = doc(db, "livros", id)
   await updateDoc(livroDoc, updatedLivro)
@@ -30,4 +37,4 @@ const deleteLivro = async (id) => {
   await deleteDoc(livroDoc)
 }
 
-export { createLivro, readLivros, updateLivro, deleteLivro }
+export { createLivro, readLivros, getLivro, updateLivro, deleteLivro }

@@ -8,7 +8,8 @@ import Rodape from "./components/Rodape"
 import Sobre from "./pages/Sobre"
 import Contato from "./pages/Contato"
 import { UsuarioContext } from "./context/UsuarioContext"
-import NovoLivro from "./pages/NovoLivro"
+import EditarLivro from "./EditarLivro.jsx"
+
 import { useEffect, useState } from "react"
 import { auth } from "./firebase/config.js"
 import { onAuthStateChanged } from "firebase/auth"
@@ -58,6 +59,7 @@ function App() {
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/livros" element={<Livros livros={livros} />} />
+            <Route path="/editar-livro/:id" element={<EditarLivro />} />
             <Route path="/sobre" element={<Sobre />} />
           </Routes>
           <Rodape />
