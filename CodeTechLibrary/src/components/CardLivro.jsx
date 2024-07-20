@@ -4,6 +4,7 @@ import "./CardLivro.css";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import PropTypes from "prop-types";
+import { toast } from 'react-toastify'; 
 
 const CardLivro = ({
   imagem,
@@ -54,12 +55,10 @@ const CardLivro = ({
       data_da_publicacao,
       editora,
       descricao,
-      estrelas,
-      comentario,
-    };
+    }
     await adicionarLivro(livro);
     navigate("/livros");
-  };
+    toast.success("Item adicionado à sua lista"); 
 
   return (
     <div className='card-livro'>

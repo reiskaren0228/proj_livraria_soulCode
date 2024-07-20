@@ -15,12 +15,12 @@ import EditarLivro from "./pages/EditarLivro"
 import UsuarioContext from "./context/UsuarioContext"
 
 import { auth } from "./firebase/config.js"
-import { createLivro, readLivros } from "./firebase/livros" // Certifique-se de que os caminhos estão corretos
+import { createLivro, readLivros, updateLivro } from "./firebase/livros"
 
 const App = () => {
   const [usuarioLogado, setUsuarioLogado] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [livros, setLivros] = useState([]) // Adicionando estado para os livros
+  const [livros, setLivros] = useState([])
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -38,6 +38,12 @@ const App = () => {
 
   const adicionarLivro = async (novoLivro) => {
     await createLivro(novoLivro)
+    const livrosAtualizados = await readLivros()
+    setLivros(livrosAtualizados)
+  }
+
+  const atualizarLivro = async (id, livroAtualizado) => {
+    await updateLivro(id, livroAtualizado)
     const livrosAtualizados = await readLivros()
     setLivros(livrosAtualizados)
   }
@@ -60,7 +66,10 @@ const App = () => {
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/livros" element={<Livros livros={livros} />} />
-            <Route path="/editar-livro/:id" element={<EditarLivro />} />
+            <Route
+              path="/editar-livro/:id"
+              element={<EditarLivro atualizarLivro={atualizarLivro} />}
+            />
             <Route path="/sobre" element={<Sobre />} />
           </Routes>
           <Rodape />
