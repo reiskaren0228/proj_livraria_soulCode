@@ -1,20 +1,9 @@
 import { useState, useEffect } from "react";
-import { FaStar } from "react-icons/fa";
 import "./CardLivro.css";
 import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import PropTypes from "prop-types";
-import { toast } from 'react-toastify'; 
 
-const CardLivro = ({
-  imagem,
-  titulo,
-  autor,
-  data_da_publicacao,
-  editora,
-  descricao,
-  adicionarLivro,
-}) => {
+const CardLivro = ({ imagem, titulo, autor, data_da_publicacao, editora, descricao }) => {
   const [curtido, setCurtido] = useState(false);
   const [estrelas, setEstrelas] = useState(0);
   const [comentario, setComentario] = useState("");
@@ -47,43 +36,33 @@ const CardLivro = ({
     saveToLocalStorage({ curtido, estrelas, comentario: e.target.value });
   };
 
-  const handleAdicionar = async () => {
-    const livro = {
-      imagem,
-      titulo,
-      autor,
-      data_da_publicacao,
-      editora,
-      descricao,
-    }
-    await adicionarLivro(livro);
+  const handleAdicionar = () => {
+    const livro = { imagem, titulo, autor, data_da_publicacao, editora, descricao };
+    const listaDesejos = JSON.parse(localStorage.getItem('listaDesejos')) || [];
+    listaDesejos.push(livro);
+    localStorage.setItem('listaDesejos', JSON.stringify(listaDesejos));
+
     navigate("/livros");
-    toast.success("Item adicionado à sua lista"); 
+    alert("Item adicionado à sua lista de desejos");
+  };
 
   return (
     <div className='card-livro'>
       <img src={imagem} alt={`Capa do livro ${titulo}`} />
       <h2 className='titulo-card'>{titulo}</h2>
-      <p className='livro-info'>
-        <strong>Autor:</strong> {autor}
-      </p>
-      <p className='livro-info'>
-        <strong>Publicado em:</strong> {data_da_publicacao}
-      </p>
-      <p className='livro-info'>
-        <strong>Editora:</strong> {editora}
-      </p>
-      <p className='livro-descricao'>
-        <strong>Descrição: </strong>
-        {descricao}
-      </p>
+      <p className='livro-info'><strong>Autor:</strong> {autor}</p>
+      <p className='livro-info'><strong>Publicado em:</strong> {data_da_publicacao}</p>
+      <p className='livro-info'><strong>Editora:</strong> {editora}</p>
+      <p className='livro-descricao'><strong>Descrição:</strong> {descricao}</p>
       <div className='stars'>
         {[1, 2, 3, 4, 5].map((rating) => (
-          <FaStar
+          <span
             key={rating}
             className={`star ${rating <= estrelas ? "active" : ""}`}
             onClick={() => handleEstrela(rating)}
-          />
+          >
+            ★
+          </span>
         ))}
       </div>
       <div className='comment-box'>
@@ -100,9 +79,9 @@ const CardLivro = ({
         >
           ❤
         </button>
-        <Button className='botao2' onClick={handleAdicionar}>
-          Adicionar à lista
-        </Button>
+        <button className='botao2' onClick={handleAdicionar}>
+          Adicionar à lista de desejos
+        </button>
       </div>
     </div>
   );
@@ -115,7 +94,6 @@ CardLivro.propTypes = {
   data_da_publicacao: PropTypes.string.isRequired,
   editora: PropTypes.string.isRequired,
   descricao: PropTypes.string.isRequired,
-  adicionarLivro: PropTypes.func.isRequired,
 };
 
 export default CardLivro;
