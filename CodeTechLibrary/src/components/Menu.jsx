@@ -1,24 +1,25 @@
-import Button from "react-bootstrap/Button"
-import Container from "react-bootstrap/Container"
-import Form from "react-bootstrap/Form"
-import Nav from "react-bootstrap/Nav"
-import Navbar from "react-bootstrap/Navbar"
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import "./Menu.css";
 import { useContext } from "react";
-import  UsuarioContext  from "../context/UsuarioContext";
+import UsuarioContext from "../context/UsuarioContext";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../firebase/auth";
+import logo from "../assets/logo_2.png";
 
-import logo from "../assets/logo_2.png"
 function Menu() {
   const usuario = useContext(UsuarioContext);
   const navigate = useNavigate();
 
   function handleLogout() {
     logout().then(() => {
-      navigate("/login")
-    })
+      navigate("/login");
+    });
   }
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -32,11 +33,11 @@ function Menu() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
             {usuario ? (
               <>
-                <Link className="nav-link" to="/">
-                  Home
-                </Link>
                 <Link className="nav-link" to="/sobre">
                   Sobre nós
                 </Link>
@@ -72,16 +73,16 @@ function Menu() {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder="qual livro você procura?"
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-dark">Search</Button>
+            <Button variant="outline-dark">Buscar</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  )
+  );
 }
 
 export default Menu;

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import CardLivro from "../components/CardLivro"
-import "./Home.css"
+import PropTypes from "prop-types";
+import CardLivro from "../components/CardLivro";
+import "./Home.css";
 
 const livrosData = [
   {
@@ -119,32 +120,47 @@ const livrosData = [
     descricao: "Aborda todos os principais conceitos de Data Science",
     categoria: "Data Science",
   },
-]
+];
+
 const SecaoLivros = ({ titulo, livros, adicionarLivro }) => {
   return (
-    <div className="secao-livros">
+    <div className='secao-livros'>
       <h2>{titulo}</h2>
-      <div className="livros-container">
+      <div className='livros-container'>
         {livros.map((livro, index) => (
           <CardLivro
             key={index}
             imagem={livro.imagem}
             titulo={livro.titulo}
             autor={livro.autor}
-            data_da_publicacao={livro.data_da_publicacao}
             editora={livro.editora}
             descricao={livro.descricao}
-            adicionarLivro={adicionarLivro} // Passando a função como prop
+            adicionarLivro={adicionarLivro}
           />
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
+
+SecaoLivros.propTypes = {
+  titulo: PropTypes.string.isRequired,
+  livros: PropTypes.arrayOf(
+    PropTypes.shape({
+      imagem: PropTypes.string.isRequired,
+      titulo: PropTypes.string.isRequired,
+      autor: PropTypes.string.isRequired,
+      editora: PropTypes.string.isRequired,
+      descricao: PropTypes.string.isRequired,
+      categoria: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  adicionarLivro: PropTypes.func.isRequired,
+};
 
 const Home = ({ adicionarLivro }) => {
-  const categorias = [...new Set(livrosData.map((livro) => livro.categoria))]
-  const [livros, setLivros] = useState(livrosData)
+  const categorias = [...new Set(livrosData.map((livro) => livro.categoria))];
+  const [livros] = useState(livrosData);
 
   return (
     <main>
@@ -154,11 +170,15 @@ const Home = ({ adicionarLivro }) => {
           key={categoria}
           titulo={categoria}
           livros={livros.filter((livro) => livro.categoria === categoria)}
-          adicionarLivro={adicionarLivro} // Passando a função como prop
+          adicionarLivro={adicionarLivro}
         />
       ))}
     </main>
-  )
-}
+  );
+};
 
-export default Home
+Home.propTypes = {
+  adicionarLivro: PropTypes.func.isRequired,
+};
+
+export default Home;
