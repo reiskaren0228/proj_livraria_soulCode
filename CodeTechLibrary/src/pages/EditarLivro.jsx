@@ -1,13 +1,12 @@
-// src/EditarLivro.jsx
 import { Button } from "react-bootstrap"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { Navigate, useNavigate, useParams } from "react-router-dom"
-import { getLivro, updateLivro } from "../firebase/livros"
+import { getLivro } from "../firebase/livros"
 import { useContext, useEffect } from "react"
 import UsuarioContext from "../context/UsuarioContext"
 
-function EditarLivro() {
+function EditarLivro({ atualizarLivro }) {
   const { id } = useParams()
 
   const {
@@ -20,7 +19,7 @@ function EditarLivro() {
   const usuario = useContext(UsuarioContext)
   const navigate = useNavigate()
 
-  function carregarLivro() {
+  useEffect(() => {
     getLivro(id).then((livro) => {
       if (livro) {
         reset(livro)
@@ -28,18 +27,13 @@ function EditarLivro() {
         navigate("/livros")
       }
     })
-  }
+  }, [id, reset, navigate])
 
-  function atualizarLivro(data) {
-    updateLivro(id, data).then(() => {
-      toast.success("Livro atualizado com sucesso!")
-      navigate("/livros")
-    })
+  const onSubmit = async (data) => {
+    await atualizarLivro(id, data)
+    toast.success("Livro atualizado com sucesso!")
+    navigate("/livros")
   }
-
-  useEffect(() => {
-    carregarLivro()
-  }, [id, reset])
 
   if (usuario === null) {
     return <Navigate to="/login" />
@@ -47,7 +41,7 @@ function EditarLivro() {
 
   return (
     <main>
-      <form className="form-section" onSubmit={handleSubmit(atualizarLivro)}>
+      <form className="form-section" onSubmit={handleSubmit(onSubmit)}>
         <h1>Editar Livro</h1>
         <hr />
         <div>

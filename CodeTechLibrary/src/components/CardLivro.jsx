@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./CardLivro.css"
 import { Button } from "react-bootstrap"
+import toast from "react-hot-toast"
 
 const CardLivro = ({
   imagem,
@@ -30,6 +31,7 @@ const CardLivro = ({
     }
     await adicionarLivro(livro)
     navigate("/livros")
+    toast.success("Item adicionado à sua lista")
   }
 
   return (
