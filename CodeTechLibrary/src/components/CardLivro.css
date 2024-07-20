@@ -41,7 +41,7 @@
 
 .button {
     background-color: transparent;
-    padding: 5px;
+    padding: 0 10px;
     border: 1px solid black;
     width: 24%;
     border-radius: 12px;
@@ -50,3 +50,15 @@
 .button.curtido {
     color: red;
 }
+
+.botoes {
+    display: flex;
+    gap: 100px;
+}
+
+.botao2 {
+    font-size: 12px;
+    background-color: #152929;
+    border: none;
+}
+

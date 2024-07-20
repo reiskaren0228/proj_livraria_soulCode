@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./CardLivro.css"
+import { Button } from "react-bootstrap"
 
 const CardLivro = ({
   imagem,
@@ -48,13 +49,15 @@ const CardLivro = ({
         <strong>Descrição: </strong>
         {descricao}
       </p>
-      <button
-        className={`button ${curtido ? "curtido" : ""}`}
-        onClick={handleCurtida}
-      >
-        ❤
-      </button>
-      <button onClick={handleAdicionar}>Adicionar à lista</button>
+      <div className="botoes">
+        <button
+          className={`button ${curtido ? "curtido" : ""}`}
+          onClick={handleCurtida}
+        >
+          ❤
+        </button>
+        <Button className="botao2" onClick={handleAdicionar}>Adicionar à lista</Button>
+      </div>
     </div>
   )
 }
