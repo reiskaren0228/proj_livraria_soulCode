@@ -53,12 +53,15 @@
 
 .botoes {
     display: flex;
-    gap: 100px;
+    gap: 5px;
+    width: 100%;
+    height: 40px;
 }
 
 .botao2 {
     font-size: 12px;
     background-color: #152929;
     border: none;
+    width: 100%;
 }
 
