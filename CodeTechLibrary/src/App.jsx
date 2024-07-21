@@ -16,6 +16,7 @@ import UsuarioContext from "./context/UsuarioContext"
 
 import { auth } from "./firebase/config.js"
 import { createLivro, readLivros, updateLivro } from "./firebase/livros"
+import SearchResults from "./pages/SearchResults.jsx"
 
 const App = () => {
   const [usuarioLogado, setUsuarioLogado] = useState(null)
@@ -71,6 +72,7 @@ const App = () => {
               element={<EditarLivro atualizarLivro={atualizarLivro} />}
             />
             <Route path="/sobre" element={<Sobre />} />
+            <Route path="/search" element={<SearchResults livros={livros} />} />
           </Routes>
           <Rodape />
         </BrowserRouter>

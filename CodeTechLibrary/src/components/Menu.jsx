@@ -1,23 +1,29 @@
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import "./Menu.css";
-import { useContext } from "react";
-import UsuarioContext from "../context/UsuarioContext";
-import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../firebase/auth";
-import logo from "../assets/logo_2.png";
+import { useContext, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import Button from "react-bootstrap/Button"
+import Container from "react-bootstrap/Container"
+import Form from "react-bootstrap/Form"
+import Nav from "react-bootstrap/Nav"
+import Navbar from "react-bootstrap/Navbar"
+import "./Menu.css"
+import UsuarioContext from "../context/UsuarioContext"
+import { logout } from "../firebase/auth"
+import logo from "../assets/logo_2.png"
 
 function Menu() {
-  const usuario = useContext(UsuarioContext);
-  const navigate = useNavigate();
+  const usuario = useContext(UsuarioContext)
+  const navigate = useNavigate()
+  const [searchTerm, setSearchTerm] = useState("")
 
   function handleLogout() {
     logout().then(() => {
-      navigate("/login");
-    });
+      navigate("/login")
+    })
+  }
+
+  function handleSearch(e) {
+    e.preventDefault()
+    navigate(`/search?query=${searchTerm}`)
   }
 
   return (
@@ -50,9 +56,6 @@ function Menu() {
               </>
             ) : (
               <>
-                <Link className="nav-link" to="/">
-                  Home
-                </Link>
                 <Link className="nav-link" to="/login">
                   Login
                 </Link>
@@ -65,27 +68,33 @@ function Menu() {
               </>
             )}
             {usuario && (
-              <span className="text-dark nav-link">{usuario.displayName}</span>
-            )}
-            {usuario && (
-              <Button variant="outline-dark" onClick={handleLogout}>
-                Sair
-              </Button>
+              <>
+                <span className="text-dark nav-link">
+                  {usuario.displayName}
+                </span>
+                <Button variant="outline-dark" onClick={handleLogout}>
+                  Sair
+                </Button>
+              </>
             )}
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={handleSearch}>
             <Form.Control
               type="search"
-              placeholder="qual livro você procura?"
+              placeholder="Busca livros adicionados"
               className="me-2"
               aria-label="Search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <Button variant="outline-dark">Buscar</Button>
+            <Button variant="outline-dark" type="submit">
+              Buscar
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  );
+  )
 }
 
-export default Menu;
+export default Menu
