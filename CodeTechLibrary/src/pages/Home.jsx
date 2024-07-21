@@ -55,7 +55,7 @@ const livrosData = [
   },
   {
     imagem: "https://m.media-amazon.com/images/I/61uelQAJ1SL._SY425_.jpg",
-    titulo: "Livro 6",
+    titulo: "Manual de DevOps",
     autor: "Gene Kim, Jez Humble, John Willis, Patrick Debois",
     data_da_publicacao: "2018",
     editora: "Alta Books",

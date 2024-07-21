@@ -67,7 +67,7 @@ const Livros = ({ livros }) => {
                 <strong>Descrição: </strong>
                 {livro.descricao}
               </p>
-              <div className="botões">
+              <div className="botao">
                 <Button variant="warning" onClick={() => handleEditar(livro.id)}>Editar</Button>
                 <Button variant="danger" onClick={() => handleDeleteLivro(livro.id)}>Deletar</Button>
                 <Button variant="success">Comprar</Button>

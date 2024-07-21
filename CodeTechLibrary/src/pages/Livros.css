@@ -65,9 +65,5 @@ h1 {
 /*Estilo para alinhar o butão*/
 .botao {
   display: flex;
-  gap: 16px;
-}
-
-Button{
-  margin-inline: 5px;
+  gap: 8px;
 }
