@@ -15,7 +15,7 @@ import EditarLivro from "./pages/EditarLivro"
 import UsuarioContext from "./context/UsuarioContext"
 
 import { auth } from "./firebase/config.js"
-import { createLivro, readLivros, updateLivro } from "./firebase/livros"
+import { createLivro, readLivros, updateLivro, getLivrosUsuario } from "./firebase/livros"
 import SearchResults from "./pages/SearchResults.jsx"
 
 const App = () => {
@@ -38,10 +38,13 @@ const App = () => {
   }, [])
 
   const adicionarLivro = async (novoLivro) => {
-    await createLivro(novoLivro)
-    const livrosAtualizados = await readLivros()
-    setLivros(livrosAtualizados)
+    if (usuarioLogado) {
+      await createLivro(novoLivro, usuarioLogado.uid)
+      const livrosAtualizados = await getLivrosUsuario(usuarioLogado.uid)
+      setLivros(livrosAtualizados)
+    }
   }
+
 
   const atualizarLivro = async (id, livroAtualizado) => {
     await updateLivro(id, livroAtualizado)

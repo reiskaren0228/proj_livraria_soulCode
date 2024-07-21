@@ -1,43 +1,55 @@
 import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import UsuarioContext from "../context/UsuarioContext"
-import { deleteLivro } from "../firebase/livros"
+import { deleteLivro, getLivrosUsuario } from "../firebase/livros"
 import toast from "react-hot-toast"
 import Button from "react-bootstrap/Button"
 import "./Livros.css"
 import Loader from "../components/Loader"
 
-const Livros = ({ livros }) => {
+const Livros = () => {
   const navigate = useNavigate()
   const usuario = useContext(UsuarioContext)
   const [isLoading, setIsLoading] = useState(true)
   const [livrosList, setLivrosList] = useState([])
 
   useEffect(() => {
-    if (!usuario) {
-      navigate("/login")
-    } else {
-      // Simulando o carregamento dos dados
-      setTimeout(() => {
-        setLivrosList(livros)
+    const carregarLivros = async () => {
+      try {
+        if (!usuario) {
+          navigate("/login")
+        } else {
+          const livrosUsuario = await getLivrosUsuario(usuario.uid)
+          setLivrosList(livrosUsuario)
+        }
+      } catch (error) {
+        console.error("Erro ao carregar livros:", error)
+        toast.error("Erro ao carregar livros. Tente novamente mais tarde.")
+      } finally {
         setIsLoading(false)
-      }, 1000) // Ajuste o tempo conforme necessário
+      }
     }
-  }, [usuario, livros, navigate])
+
+    carregarLivros()
+  }, [usuario, navigate])
 
   const handleEditar = (id) => {
     navigate(`/editar-livro/${id}`)
   }
 
-  const handleDeleteLivro = (id) => {
+  const handleDeleteLivro = async (id) => {
     const deletar = confirm("Tem certeza que deseja deletar este livro?")
     if (deletar) {
-      deleteLivro(id).then(() => {
+      try {
+        await deleteLivro(id)
         toast.success("Livro removido com sucesso")
         setLivrosList((prevLivros) =>
           prevLivros.filter((livro) => livro.id !== id)
         )
-      })
+      } catch (error) {
+        console.error("Erro ao deletar livro:", error)
+        toast.error("Erro ao deletar livro. Tente novamente mais tarde.")
+      }
     }
   }
 
@@ -68,8 +80,18 @@ const Livros = ({ livros }) => {
                 {livro.descricao}
               </p>
               <div className="botao">
-                <Button variant="warning" onClick={() => handleEditar(livro.id)}>Editar</Button>
-                <Button variant="danger" onClick={() => handleDeleteLivro(livro.id)}>Deletar</Button>
+                <Button
+                  variant="warning"
+                  onClick={() => handleEditar(livro.id)}
+                >
+                  Editar
+                </Button>
+                <Button
+                  variant="danger"
+                  onClick={() => handleDeleteLivro(livro.id)}
+                >
+                  Deletar
+                </Button>
                 <Button variant="success">Comprar</Button>
               </div>
             </div>

@@ -13,8 +13,8 @@ import {
 
 const livrosCollection = collection(db, "livros")
 
-export const createLivro = async (livro) => {
-  await addDoc(livrosCollection, livro)
+export const createLivro = async (livro, idUsuario) => {
+  await addDoc(livrosCollection, { ...livro, idUsuario })
 }
 
 export const readLivros = async () => {

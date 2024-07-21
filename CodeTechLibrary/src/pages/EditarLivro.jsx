@@ -19,15 +19,16 @@ function EditarLivro({ atualizarLivro }) {
   const usuario = useContext(UsuarioContext)
   const navigate = useNavigate()
 
-  useEffect(() => {
-    getLivro(id).then((livro) => {
-      if (livro) {
-        reset(livro)
-      } else {
-        navigate("/livros")
-      }
-    })
-  }, [id, reset, navigate])
+ useEffect(() => {
+   getLivro(id).then((livro) => {
+     if (livro && livro.idUsuario === usuario.uid) {
+       reset(livro)
+     } else {
+       navigate("/livros")
+     }
+   })
+ }, [id, reset, navigate, usuario.uid])
+
 
   const onSubmit = async (data) => {
     await atualizarLivro(id, data)
