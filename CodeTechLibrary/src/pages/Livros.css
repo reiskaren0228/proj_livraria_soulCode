@@ -1,64 +1,73 @@
 /* Estilo para o container principal */
 .lista-livros {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-  }
-  
-  /* Estilo para cada card de livro */
-  .card-livro {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 200px;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .card-livro:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Estilo para a imagem do livro */
-  .card-livro img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-  
-  /* Estilo para o título do livro */
-  .titulo-card {
-    font-size: 1.2em;
-    margin: 8px 0;
-    padding: 0 8px;
-    color: #333;
-    text-align: center;
-  }
-  
-  /* Estilo para as informações do livro */
-  .livro-info {
-    font-size: 0.9em;
-    color: #555;
-    margin: 4px 0;
-    padding: 0 8px;
-  }
-  
-  /* Estilo para a descrição do livro */
-  .livro-descricao {
-    font-size: 0.9em;
-    color: #555;
-    margin: 8px 0;
-    padding: 0 8px 8px;
-  }
-  
-  /* Estilo para o título principal */
-  h1 {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Estilo para cada card de livro */
+.card-livro {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 200px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-livro:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para a imagem do livro */
+.card-livro img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Estilo para o título do livro */
+.titulo-card {
+  font-size: 1.2em;
+  margin: 8px 0;
+  padding: 0 8px;
+  color: #333;
+  text-align: center;
+}
+
+/* Estilo para as informações do livro */
+.livro-info {
+  font-size: 0.9em;
+  color: #555;
+  margin: 4px 0;
+  padding: 0 8px;
+}
+
+/* Estilo para a descrição do livro */
+.livro-descricao {
+  font-size: 0.9em;
+  color: #555;
+  margin: 8px 0;
+  padding: 0 8px 8px;
+}
+
+/* Estilo para o título principal */
+h1 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/*Estilo para alinhar o butão*/
+.botao {
+  display: flex;
+  gap: 16px;
+}
+
+Button{
+  margin-inline: 5px;
+}

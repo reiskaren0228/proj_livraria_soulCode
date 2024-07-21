@@ -31,7 +31,6 @@ const CardLivro = ({
     }
     await adicionarLivro(livro)
     navigate("/livros")
-    toast.success("Item adicionado à sua lista")
   }
 
   return (
