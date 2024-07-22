@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { entrarGoogle, loginUsuario } from "../firebase/auth";
 
 function Login() {
@@ -79,6 +79,10 @@ function Login() {
           <a href="#">
             <ion-icon name="logo-linkedin"></ion-icon>
           </a>
+        </div>
+        <div className="link-cadastro">
+          <p>Não tem uma conta?</p>
+          <Link className="btn btn-dark" to="/cadastro">Cadastre-se </Link>
         </div>
       </form>
     </main>

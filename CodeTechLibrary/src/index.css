@@ -66,6 +66,15 @@ body {
 .form-section .btn-dark:hover {
   background-color: #0f1d1d;
 }
+.link-cadastro {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-cadastro p {
+  text-align: center;
+  font-size: 14px;
+}
 
 .icon-container {
   display: flex;
@@ -115,3 +124,4 @@ p {
     width: 90%;
   }
 }
+
