@@ -18,6 +18,7 @@ import { auth } from "./firebase/config.js"
 import { createLivro, readLivros, updateLivro, getLivrosUsuario } from "./firebase/livros"
 import SearchResults from "./pages/SearchResults.jsx"
 import AdicionarLivro from "./pages/AdicionarLivro.jsx"
+import NotFound from "./pages/NotFound.jsx"
 
 const App = () => {
   const [usuarioLogado, setUsuarioLogado] = useState(null)
@@ -78,6 +79,7 @@ const App = () => {
             <Route path="/livros/adicionar" element={<AdicionarLivro/>}/>
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/search" element={<SearchResults livros={livros} />} />
+            <Route path="*" element={<NotFound />}/>
           </Routes>
           <Rodape />
         </BrowserRouter>

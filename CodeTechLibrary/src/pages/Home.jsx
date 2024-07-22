@@ -147,17 +147,17 @@ const Home = ({ adicionarLivro }) => {
   const [livros, setLivros] = useState(livrosData)
 
   return (
-    <main>
-      <h1>Catálogo de Livros 📚</h1>
-      {categorias.map((categoria) => (
-        <SecaoLivros
-          key={categoria}
-          titulo={categoria}
-          livros={livros.filter((livro) => livro.categoria === categoria)}
-          adicionarLivro={adicionarLivro} // Passando a função como prop
-        />
-      ))}
-    </main>
+      <main>
+        <h1>Catálogo de Livros 📚</h1>
+        {categorias.map((categoria) => (
+          <SecaoLivros
+            key={categoria}
+            titulo={categoria}
+            livros={livros.filter((livro) => livro.categoria === categoria)}
+            adicionarLivro={adicionarLivro} // Passando a função como prop
+          />
+        ))}
+      </main>
   )
 }
 
