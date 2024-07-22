@@ -28,7 +28,10 @@ export async function entrarGoogle() {
 }
 
 export async function loginUsuario(email, senha) {
-  await signInWithEmailAndPassword(auth, email, senha);
+  const { user } = await signInWithEmailAndPassword(auth, email, senha)
+  if (!user.emailVerified) {
+    throw new Error("email-verification-required")
+  }
 }
 
 export async function logout() {
