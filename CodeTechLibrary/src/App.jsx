@@ -17,6 +17,7 @@ import UsuarioContext from "./context/UsuarioContext"
 import { auth } from "./firebase/config.js"
 import { createLivro, readLivros, updateLivro, getLivrosUsuario } from "./firebase/livros"
 import SearchResults from "./pages/SearchResults.jsx"
+import AdicionarLivro from "./pages/AdicionarLivro.jsx"
 
 const App = () => {
   const [usuarioLogado, setUsuarioLogado] = useState(null)
@@ -74,6 +75,7 @@ const App = () => {
               path="/editar-livro/:id"
               element={<EditarLivro atualizarLivro={atualizarLivro} />}
             />
+            <Route path="/livros/adicionar" element={<AdicionarLivro/>}/>
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/search" element={<SearchResults livros={livros} />} />
           </Routes>

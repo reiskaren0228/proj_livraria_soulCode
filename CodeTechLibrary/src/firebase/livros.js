@@ -17,6 +17,11 @@ export const createLivro = async (livro, idUsuario) => {
   await addDoc(livrosCollection, { ...livro, idUsuario })
 }
 
+//adicionar
+export async function adicionarLivro(data) {
+  await addDoc(livrosCollection, data);
+}
+
 export const readLivros = async () => {
   const snapshot = await getDocs(livrosCollection)
   return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))

@@ -6,6 +6,7 @@ import toast from "react-hot-toast"
 import Button from "react-bootstrap/Button"
 import "./Livros.css"
 import Loader from "../components/Loader"
+import { Link } from "react-router-dom"
 
 const Livros = () => {
   const navigate = useNavigate()
@@ -61,6 +62,9 @@ const Livros = () => {
     <main>
       <div>
         <h1>Lista de Livros</h1>
+        <Link className="btn btn-dark"  to="/livros/adicionar">
+          Adicionar Livro
+        </Link>
         <div className="lista-livros">
           {livrosList.map((livro) => (
             <div key={livro.id} className="card-livro">
