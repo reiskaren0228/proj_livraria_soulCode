@@ -1,20 +1,21 @@
 import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { cadastrarUsuario } from "../firebase/auth"
-import toast from "react-hot-toast"
-import { useNavigate } from "react-router-dom"
+import { cadastrarUsuario } from "../firebase/auth";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function Cadastro() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
-  function cadastrar(data) {
-   cadastrarUsuario(data.nome, data.email, data.senha).then(() => {
-    toast.success(`Bem-vindo ao CodeTechLibrary, ${data.nome}!`)
-    navigate("/livros")
-   }).catch((error) => {
-    toast.error("Um erro aconteceu!" + error.code)
-   })
+  async function cadastrar(data) {
+    try {
+      await cadastrarUsuario(data.nome, data.email, data.senha);
+      toast.success(`Bem-vindo ao CodeTechLibrary, ${data.nome}! Por favor, verifique seu e-mail para confirmar o cadastro.`);
+      navigate("/login"); // Redireciona para a página de login após o cadastro
+    } catch (error) {
+      toast.error("Um erro aconteceu! " + error.code);
+    }
   }
 
   return (
