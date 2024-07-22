@@ -2,7 +2,6 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./CardLivro.css"
 import { Button } from "react-bootstrap"
-import toast from "react-hot-toast"
 
 const CardLivro = ({
   imagem,

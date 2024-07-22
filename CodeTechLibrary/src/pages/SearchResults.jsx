@@ -13,7 +13,6 @@ const SearchResults = ({ livros }) => {
 
   useEffect(() => {
     if (searchTerm) {
-      // Filtrando livros recebidos via props
       const livrosFiltrados = livros.filter((livro) =>
         livro.titulo.toLowerCase().includes(searchTerm.toLowerCase())
       )

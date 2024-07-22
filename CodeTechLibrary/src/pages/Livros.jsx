@@ -24,7 +24,6 @@ const Livros = () => {
           setLivrosList(livrosUsuario)
         }
       } catch (error) {
-        console.error("Erro ao carregar livros:", error)
         toast.error("Erro ao carregar livros. Tente novamente mais tarde.")
       } finally {
         setIsLoading(false)
@@ -48,7 +47,6 @@ const Livros = () => {
           prevLivros.filter((livro) => livro.id !== id)
         )
       } catch (error) {
-        console.error("Erro ao deletar livro:", error)
         toast.error("Erro ao deletar livro. Tente novamente mais tarde.")
       }
     }

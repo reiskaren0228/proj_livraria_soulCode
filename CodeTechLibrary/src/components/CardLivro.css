@@ -28,7 +28,7 @@
     margin: 0;
     line-height: 1.6;
     color: #555;
-    text-align: left; /* Alinha as informações à esquerda */
+    text-align: left;
 }
 
 .livro-descricao {
@@ -36,7 +36,7 @@
     line-height: 1.6;
     color: #555;
     text-align: left;
-    font-size: 0.8rem; /* Mantém o tamanho pequeno da descrição */
+    font-size: 0.8rem;
 }
 
 .button {
@@ -64,7 +64,6 @@
     border: none;
     width: 100%;
 }
-
 
 @media (max-width: 940px) {
  .card-livro {

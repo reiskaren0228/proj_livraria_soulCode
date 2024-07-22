@@ -12,7 +12,7 @@ function Cadastro() {
     try {
       await cadastrarUsuario(data.nome, data.email, data.senha);
       toast.success(`Bem-vindo ao CodeTechLibrary, ${data.nome}! Por favor, verifique seu e-mail para confirmar o cadastro.`);
-      navigate("/login"); // Redireciona para a página de login após o cadastro
+      navigate("/login");
     } catch (error) {
       toast.error("Um erro aconteceu! " + error.code);
     }

@@ -21,12 +21,11 @@ function AdicionarLivro() {
     data.idUsuario = usuario.uid;
     adicionarLivro(data)
       .then(() => {
-        toast.success("Tarefa adicionada com sucesso!")
-        // Redirecionar o usuário para /tarefas
+        toast.success("Livro adicionado com sucesso!")
         navigate("/livros")
       })
       .catch(() => {
-        toast.error("Um erro aonteceu ao adicionar a tarefa!")
+        toast.error("Um erro aconteceu ao adicionar o livro!")
       })
   }
 

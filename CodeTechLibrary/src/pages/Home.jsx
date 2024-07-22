@@ -134,7 +134,7 @@ const SecaoLivros = ({ titulo, livros, adicionarLivro }) => {
             data_da_publicacao={livro.data_da_publicacao}
             editora={livro.editora}
             descricao={livro.descricao}
-            adicionarLivro={adicionarLivro} // Passando a função como prop
+            adicionarLivro={adicionarLivro}
           />
         ))}
       </div>
@@ -154,7 +154,7 @@ const Home = ({ adicionarLivro }) => {
             key={categoria}
             titulo={categoria}
             livros={livros.filter((livro) => livro.categoria === categoria)}
-            adicionarLivro={adicionarLivro} // Passando a função como prop
+            adicionarLivro={adicionarLivro} 
           />
         ))}
       </main>
