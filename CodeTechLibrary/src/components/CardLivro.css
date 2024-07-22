@@ -9,7 +9,7 @@
     align-items: flex-start; /* Alinha os itens à esquerda */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
-    width: calc(25% - 40px);
+    width: calc(28% - 40px);
     margin: 20px;
 }
 
@@ -65,3 +65,9 @@
     width: 100%;
 }
 
+
+@media (max-width: 940px) {
+ .card-livro {
+    width: calc(40% - 40px);
+}
+}
